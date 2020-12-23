@@ -24,6 +24,14 @@ function App() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (charge !== "" && amount > 0) {
+      const singleExpense = { id: uuid(), charge, amount };
+      setExpences([...expences, singleExpense]);
+      setCharge("");
+      setAmount("");
+    } else {
+      // handle alert
+    }
   };
   return (
     <>
@@ -40,10 +48,10 @@ function App() {
         <ExpenseList expences={expences} />
       </main>
       <h1>
-        total spwnding:{" "}
+        total spending:{" "}
         <span className="total">
           {expences.reduce((acc, curr) => {
-            return (acc += curr.amount);
+            return (acc += parseInt(curr.amount));
           }, 0)}
         </span>
       </h1>
