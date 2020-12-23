@@ -2,7 +2,7 @@ import React from "react";
 import Item from "./ExpenseItem";
 import { MdFavorite } from "react-icons/md";
 
-const ExpenseList = ({ expences }) => {
+const ExpenseList = ({ expences, clearList }) => {
   return (
     <>
       <ul className="list">
@@ -11,7 +11,7 @@ const ExpenseList = ({ expences }) => {
         })}
       </ul>
       {expences.length > 0 && (
-        <button className="btn">
+        <button className="btn" onClick={clearList}>
           clear list
           <MdFavorite className="btn-icon" />
         </button>
