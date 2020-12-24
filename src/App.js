@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import ExpenseList from "./components/ExpenseList";
 import ExpenseForm from "./components/ExpenseForm";
@@ -80,6 +80,11 @@ function App() {
     setEdit(true);
     setId(id);
   };
+
+  useEffect(() => {
+    console.log("use effect");
+    localStorage.setItem("expenses", JSON.stringify(expences));
+  }, [expences]);
   return (
     <>
       {alert.show && <Alert type={alert.type} text={alert.text} />}
